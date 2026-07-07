@@ -117,7 +117,7 @@ export default function Hero() {
                   boxShadow: "0 25px 60px rgba(0,0,0,0.4)"
                 }}>
                 <div className="flex items-center gap-4 mb-8">
-                  <Image src="/logo.png" alt="Logo" width={52} height={52} className="object-contain" />
+                  <Image src="/main-logo.png" alt="AL SADDAT Logo" width={140} height={50} className="object-contain h-10 w-auto" />
                   <div>
                     <div className="text-white font-black text-lg">AL SADDAT</div>
                     <div className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFD200" }}>TAX ADVISORS</div>

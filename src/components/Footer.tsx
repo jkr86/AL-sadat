@@ -18,12 +18,8 @@ export default function Footer() {
       <div className="container-custom relative px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid lg:grid-cols-5 gap-10 mb-12">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <Image src="/logo.png" alt="AL SADDAT Tax Advisors" width={44} height={44} className="object-contain" />
-              <div>
-                <h3 className="font-black text-lg text-gray-900">AL SADDAT</h3>
-                <p className="text-gold-600 text-[10px] font-bold tracking-[0.22em] uppercase">TAX ADVISORS</p>
-              </div>
+            <div className="mb-6">
+              <Image src="/main-logo.png" alt="AL SADDAT Tax Advisors" width={300} height={100} className="object-contain h-24 w-auto" />
             </div>
             <p className="text-gray-500 mb-6 text-sm leading-relaxed max-w-sm">
               Your trusted partner for complete tax, business, and compliance solutions in Pakistan.

@@ -31,17 +31,13 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-          scrolled ? "shadow-soft border-b border-gray-100 py-3" : "py-5"
+          scrolled ? "shadow-soft border-b border-gray-100 py-1" : "py-2"
         }`}
       >
         <div className="container-custom flex items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="AL SADDAT Tax Advisors" width={44} height={44} className="object-contain" priority />
-            <div>
-              <div className="font-black text-base text-gray-900 leading-tight">AL SADDAT</div>
-              <div className="text-[10px] font-bold tracking-[0.2em] text-gold-600 uppercase">TAX ADVISORS</div>
-            </div>
+          <a href="#home" className="flex items-center">
+            <Image src="/main-logo.png" alt="AL SADDAT Tax Advisors" width={300} height={100} className="object-contain h-24 w-auto" priority />
           </a>
 
           {/* Desktop links */}
