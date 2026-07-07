@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="container-custom flex items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <Image src="/main-logo.png" alt="AL SADDAT Tax Advisors" width={300} height={100} className="object-contain h-24 w-auto" priority />
+            <Image src="/main-logo.png" alt="AL SADDAT Tax Advisors" width={300} height={100} className="object-contain h-12 w-auto lg:h-24" priority />
           </a>
 
           {/* Desktop links */}
