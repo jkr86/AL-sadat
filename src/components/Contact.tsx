@@ -16,7 +16,7 @@ function WhatsAppLogo({ size = 40 }: { size?: number }) {
 const contactInfo = [
   { icon: Phone,  label: "Call Us",       value: "0300-5515985",                               href: "tel:03005515985" },
   { icon: Mail,   label: "Email Us",      value: "Alsaddattaxadvisors@gmail.com",               href: "mailto:Alsaddattaxadvisors@gmail.com" },
-  { icon: MapPin, label: "Office",        value: "Office No. 112, Al Makkah Tower, Opposite Farid Jinnah Hospital, Abbottabad Road, Mansehra", href: "https://maps.google.com/?q=Al+Makkah+Tower+Mansehra" },
+  { icon: MapPin, label: "Office",        value: "Office No. 112, Al Makkah Tower, Opposite Fauji Foundation Hospital, Abbottabad Road, Mansehra", href: "https://maps.google.com/?q=Al+Makkah+Tower+Mansehra" },
   { icon: Clock,  label: "Working Hours", value: "Monday - Saturday: 9:00 AM - 7:00 PM",       href: null },
 ];
 

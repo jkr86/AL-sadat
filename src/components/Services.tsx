@@ -5,6 +5,50 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Check, LayoutGrid } from "lucide-react";
 
+function LogoTab({ s, on, onClick }: { s: SC; on: boolean; onClick: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <button onClick={onClick}
+        className={`flex items-center gap-2.5 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
+          on ? "scale-105 shadow-gold border-2 border-yellow-300" : "bg-white text-gray-500 border border-gray-200 hover:border-gold-300 hover:text-gray-900"
+        }`}
+        style={on ? { background: "linear-gradient(135deg,#FFD200,#E6BC00)" } : {}}>
+        <motion.div
+          animate={{ scale: hovered ? 1.15 : 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="w-6 h-6 rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center"
+          style={{ background: s.logoBg }}>
+          <Image src={s.logo} alt={s.title} width={24} height={24} className="object-contain w-full h-full" />
+        </motion.div>
+        {s.title}
+      </button>
+
+      {/* Hover popup — enlarged logo */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 8 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50 pointer-events-none"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 flex items-center justify-center"
+              style={{ minWidth: 130 }}>
+              <Image src={s.logo} alt={s.title} width={120} height={80} className="object-contain max-h-20 w-auto" />
+            </div>
+            {/* Arrow */}
+            <div className="flex justify-center">
+              <div className="w-3 h-3 bg-white border-r border-b border-gray-100 rotate-45 -mt-1.5" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 type SC = { id: string; title: string; logo: string; logoBg: string; description: string; sections: { title: string; items: string[] }[] };
 
 const services: SC[] = [
@@ -63,22 +107,9 @@ export default function Services() {
         {/* Tabs */}
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-3 mb-10">
-          {services.map((s) => {
-            const on = active === s.id;
-            return (
-              <button key={s.id} onClick={() => setActive(s.id)}
-                className={`flex items-center gap-2.5 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
-                  on ? "scale-105 shadow-gold border-2 border-yellow-300" : "bg-white text-gray-500 border border-gray-200 hover:border-gold-300 hover:text-gray-900"
-                }`}
-                style={on ? { background: "linear-gradient(135deg,#FFD200,#E6BC00)" } : {}}>
-                <div className="w-6 h-6 rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center"
-                  style={{ background: s.logoBg }}>
-                  <Image src={s.logo} alt={s.title} width={24} height={24} className="object-contain w-full h-full" />
-                </div>
-                {s.title}
-              </button>
-            );
-          })}
+          {services.map((s) => (
+            <LogoTab key={s.id} s={s} on={active === s.id} onClick={() => setActive(s.id)} />
+          ))}
         </motion.div>
 
         <AnimatePresence mode="wait">

@@ -80,7 +80,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" /><span>Alsaddattaxadvisors@gmail.com</span></a></li>
               <li className="flex items-start gap-3 text-gray-500 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-gold-500" />
-                <span>Office No. 112, Al Makkah Tower, Opposite Farid Jinnah Hospital, Abbottabad Road, Mansehra</span>
+                <span>Office No. 112, Al Makkah Tower, Opposite Fauji Foundation Hospital, Abbottabad Road, Mansehra</span>
               </li>
             </ul>
           </motion.div>
