@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileCheck2, Building2, Landmark, ArrowRight, Check, LayoutGrid } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, LayoutGrid } from "lucide-react";
 
-type SC = { id: string; title: string; icon: typeof FileCheck2; description: string; sections: { title: string; items: string[] }[] };
+type SC = { id: string; title: string; logo: string; logoBg: string; description: string; sections: { title: string; items: string[] }[] };
 
 const services: SC[] = [
   {
-    id: "fbr", title: "FBR Services", icon: FileCheck2,
+    id: "fbr", title: "FBR Services", logo: "/fbr-logo.png", logoBg: "#1a5fa8",
     description: "Complete Federal Board of Revenue services including tax registration, return filing, ATL management, and full compliance support.",
     sections: [
       { title: "Income Tax Registration (NTN)", items: ["New NTN Registration", "Individual NTN", "Business NTN", "Company NTN"] },
@@ -19,7 +20,7 @@ const services: SC[] = [
     ],
   },
   {
-    id: "kpra", title: "KPRA Services", icon: Landmark,
+    id: "kpra", title: "KPRA Services", logo: "/kpra-logo.png", logoBg: "#fff",
     description: "Khyber Pakhtunkhwa Revenue Authority services covering sales tax on services, registrations, e-services, and full compliance.",
     sections: [
       { title: "KPRA Registration",     items: ["New Registration", "Registration Amendment", "Business Profile Updates"] },
@@ -29,7 +30,7 @@ const services: SC[] = [
     ],
   },
   {
-    id: "secp", title: "SECP Services", icon: Building2,
+    id: "secp", title: "SECP Services", logo: "/secp-logo.jpg", logoBg: "#fff",
     description: "Complete Securities and Exchange Commission services — from company incorporation to corporate compliance and legal documentation.",
     sections: [
       { title: "Company Registration",          items: ["Single Member Company (SMC)", "Private Limited Company", "Partnership Registration"] },
@@ -66,13 +67,15 @@ export default function Services() {
             const on = active === s.id;
             return (
               <button key={s.id} onClick={() => setActive(s.id)}
-                className={`flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300 ${
-                  on
-                    ? "text-white scale-105 shadow-gold"
-                    : "bg-white text-gray-500 border border-gray-200 hover:border-gold-300 hover:text-gray-900"
+                className={`flex items-center gap-2.5 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
+                  on ? "scale-105 shadow-gold border-2 border-yellow-300" : "bg-white text-gray-500 border border-gray-200 hover:border-gold-300 hover:text-gray-900"
                 }`}
                 style={on ? { background: "linear-gradient(135deg,#FFD200,#E6BC00)" } : {}}>
-                <s.icon className="w-4 h-4" />{s.title}
+                <div className="w-6 h-6 rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center"
+                  style={{ background: s.logoBg }}>
+                  <Image src={s.logo} alt={s.title} width={24} height={24} className="object-contain w-full h-full" />
+                </div>
+                {s.title}
               </button>
             );
           })}
@@ -84,10 +87,10 @@ export default function Services() {
             transition={{ duration: 0.25 }}>
 
             {/* Description */}
-            <div className="bg-amber-50 border border-gold-200 rounded-2xl p-7 mb-7 flex items-start gap-5">
-              <div className="hidden md:flex w-14 h-14 rounded-xl items-center justify-center flex-shrink-0 shadow-gold"
-                style={{ background: "linear-gradient(135deg,#FFD200,#E6BC00)" }}>
-                <svc.icon className="w-7 h-7 text-white" />
+            <div className="bg-amber-50 border border-gold-200 rounded-2xl p-7 mb-7 flex items-center gap-5">
+              <div className="hidden md:flex w-20 h-14 rounded-xl items-center justify-center flex-shrink-0 overflow-hidden border border-gray-200 bg-white p-1.5"
+                style={{ boxShadow: "0 4px 14px rgba(0,0,0,0.08)" }}>
+                <Image src={svc.logo} alt={svc.title} width={80} height={56} className="object-contain w-full h-full" />
               </div>
               <div>
                 <h3 className="text-2xl font-black text-gray-900 mb-2">{svc.title}</h3>

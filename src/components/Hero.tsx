@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, CheckCircle, Shield, TrendingUp, Award, FileCheck2, Building2, Landmark } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle, Shield, Award } from "lucide-react";
 import Image from "next/image";
 
 const stats = [
@@ -12,9 +12,9 @@ const stats = [
 ];
 
 const services = [
-  { icon: FileCheck2, label: "FBR Services",  color: "#FFD200" },
-  { icon: Landmark,   label: "KPRA Services", color: "#FFD200" },
-  { icon: Building2,  label: "SECP Services", color: "#FFD200" },
+  { logo: "/fbr-logo.png",  label: "FBR Services",  bg: "#1a5fa8" },
+  { logo: "/kpra-logo.png", label: "KPRA Services", bg: "#fff" },
+  { logo: "/secp-logo.jpg", label: "SECP Services", bg: "#fff" },
 ];
 
 export default function Hero() {
@@ -126,14 +126,14 @@ export default function Hero() {
 
                 {/* Service pills */}
                 <div className="space-y-3 mb-8">
-                  {services.map(({ icon: Icon, label }, i) => (
+                  {services.map(({ logo, label, bg }, i) => (
                     <motion.div key={label}
                       initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 + i * 0.1 }}
                       className="flex items-center gap-3 rounded-2xl px-4 py-3.5"
                       style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                      <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: "#FFD200" }}>
-                        <Icon className="w-4 h-4 text-black" />
+                      <div className="w-10 h-9 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden p-1"
+                        style={{ background: bg }}>
+                        <Image src={logo} alt={label} width={40} height={36} className="object-contain w-full h-full" />
                       </div>
                       <span className="text-white font-semibold text-sm">{label}</span>
                       <ArrowRight className="w-4 h-4 ml-auto" style={{ color: "#FFD200" }} />
